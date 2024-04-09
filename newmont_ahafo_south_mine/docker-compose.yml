@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: my_password
+      POSTGRES_DB: newmont_ahafo_database
+    ports:
+      - "5432:5432"
+
+
+  python:
+    build: .
+    depends_on:
+      - postgres
